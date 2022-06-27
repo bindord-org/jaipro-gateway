@@ -1,0 +1,516 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Eureka Keycloak Authentication API",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://springdoc.org"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8090",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/eureka/keycloak-auth/v1/auth": {
+      "get": {
+        "tags": [
+          "auth-controller"
+        ],
+        "operationId": "getAllUsers",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserRepresentation"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "auth-controller"
+        ],
+        "operationId": "getOne",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLogin"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserToken"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          }
+        }
+      },
+      "UserLogin": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "maxLength": 60,
+            "minLength": 7,
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 50,
+            "minLength": 8,
+            "type": "string"
+          }
+        }
+      },
+      "UserToken": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "expiresIn": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "refreshExpiresIn": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "refreshToken": {
+            "type": "string"
+          },
+          "tokenType": {
+            "type": "string"
+          },
+          "idToken": {
+            "type": "string"
+          },
+          "notBeforePolicy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sessionState": {
+            "type": "string"
+          },
+          "otherClaims": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "scope": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          },
+          "errorDescription": {
+            "type": "string"
+          },
+          "errorUri": {
+            "type": "string"
+          }
+        }
+      },
+      "CredentialRepresentation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "userLabel": {
+            "type": "string"
+          },
+          "createdDate": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "secretData": {
+            "type": "string"
+          },
+          "credentialData": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "value": {
+            "type": "string"
+          },
+          "temporary": {
+            "type": "boolean"
+          },
+          "device": {
+            "type": "string",
+            "deprecated": true
+          },
+          "hashedSaltedValue": {
+            "type": "string",
+            "deprecated": true
+          },
+          "salt": {
+            "type": "string",
+            "deprecated": true
+          },
+          "hashIterations": {
+            "type": "integer",
+            "format": "int32",
+            "deprecated": true
+          },
+          "counter": {
+            "type": "integer",
+            "format": "int32",
+            "deprecated": true
+          },
+          "algorithm": {
+            "type": "string",
+            "deprecated": true
+          },
+          "digits": {
+            "type": "integer",
+            "format": "int32",
+            "deprecated": true
+          },
+          "period": {
+            "type": "integer",
+            "format": "int32",
+            "deprecated": true
+          },
+          "config": {
+            "type": "object",
+            "properties": {
+              "empty": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "deprecated": true
+          }
+        }
+      },
+      "FederatedIdentityRepresentation": {
+        "type": "object",
+        "properties": {
+          "identityProvider": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "userName": {
+            "type": "string"
+          }
+        }
+      },
+      "SocialLinkRepresentation": {
+        "type": "object",
+        "properties": {
+          "socialProvider": {
+            "type": "string"
+          },
+          "socialUserId": {
+            "type": "string"
+          },
+          "socialUsername": {
+            "type": "string"
+          }
+        }
+      },
+      "UserConsentRepresentation": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string"
+          },
+          "grantedClientScopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "createdDate": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastUpdatedDate": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "grantedRealmRoles": {
+            "type": "array",
+            "deprecated": true,
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "UserRepresentation": {
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "origin": {
+            "type": "string"
+          },
+          "createdTimestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "username": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "totp": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "emailVerified": {
+            "type": "boolean"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "federationLink": {
+            "type": "string"
+          },
+          "serviceAccountClientId": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "credentials": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CredentialRepresentation"
+            }
+          },
+          "disableableCredentialTypes": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requiredActions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "federatedIdentities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FederatedIdentityRepresentation"
+            }
+          },
+          "realmRoles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "clientRoles": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "clientConsents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserConsentRepresentation"
+            }
+          },
+          "notBefore": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "applicationRoles": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "deprecated": true
+          },
+          "socialLinks": {
+            "type": "array",
+            "deprecated": true,
+            "items": {
+              "$ref": "#/components/schemas/SocialLinkRepresentation"
+            }
+          },
+          "groups": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "access": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "basicScheme": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  }
+}

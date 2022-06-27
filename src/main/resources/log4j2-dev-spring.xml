@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATH">
+            eureka_auth_logs
+        </Property>
+        <Property name="LOG_PATTERN">
+            [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} --- [%15.15t] %-40.40c{1.} : %m%n%ex
+        </Property>
+    </Properties>
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+        <!--<File name="AppFileAppender" fileName="${LOG_PATH}/app.log">
+            <PatternLayout>
+                <pattern>
+                    [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+                </pattern>
+            </PatternLayout>
+        </File>-->
+        <RollingFile
+                name="AppFileAppender"
+                fileName="${LOG_PATH}/app.log"
+                filePattern="${LOG_PATH}/$${date:yyyy-MM}/app.%d{yyyy-MM-dd}.log.gz"
+                ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>
+                    [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+                </Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5" />
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.bindord.eureka.gateway.aop" level="info" additivity="false">
+            <AppenderRef ref="AppFileAppender"/>
+            <AppenderRef ref="ConsoleAppender"/>
+        </Logger>
+        <Logger name="com.bindord.eureka.gateway.service.impl" level="warn" additivity="false">
+            <!--<AppenderRef ref="AppFileAppender"/>-->
+            <AppenderRef ref="ConsoleAppender"/>
+        </Logger>
+        <Logger name="com.bindord.eureka.gateway.service" level="warn" additivity="false">
+            <!--<AppenderRef ref="AppFileAppender"/>-->
+            <AppenderRef ref="ConsoleAppender"/>
+        </Logger>
+        <Logger name="com.bindord.eureka.gateway.advice" level="warn" additivity="false">
+            <!--<AppenderRef ref="AppFileAppender"/>-->
+            <AppenderRef ref="ConsoleAppender"/>
+        </Logger>
+        <Logger name="org.springframework.security" level="warn" additivity="false">
+            <!--<AppenderRef ref="AppFileAppender"/>-->
+            <AppenderRef ref="ConsoleAppender"/>
+        </Logger>
+
+        <Logger name="com.bindord.eureka.gateway.service.impl.EmailServiceImpl" level="error" additivity="false">
+            <!--<AppenderRef ref="AppFileAppender"/>-->
+            <AppenderRef ref="ConsoleAppender"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="ConsoleAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -1,0 +1,396 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/ms-profession": {
+      "get": {
+        "tags": [
+          "ms-profession-controller"
+        ],
+        "operationId": "getAll_1",
+        "responses": {
+          "200": {
+            "description": "Get all professionals",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MsProfession"
+                  }
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ms-profession-controller"
+        ],
+        "operationId": "save",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MsProfession"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Storage a professional",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MsProfession"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ms-profession-controller"
+        ],
+        "operationId": "removeAll",
+        "responses": {
+          "400": {
+            "description": "Operation failed"
+          },
+          "200": {
+            "description": "Delete all professionals"
+          }
+        }
+      }
+    },
+    "/professional": {
+      "get": {
+        "tags": [
+          "professional-controller"
+        ],
+        "operationId": "getAll_2",
+        "responses": {
+          "200": {
+            "description": "Get all professionals",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Professional"
+                  }
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "professional-controller"
+        ],
+        "operationId": "save_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Professional"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Storage a professional",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Professional"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "professional-controller"
+        ],
+        "operationId": "removeAll_1",
+        "responses": {
+          "400": {
+            "description": "Operation failed"
+          },
+          "200": {
+            "description": "Delete all professionals"
+          }
+        }
+      }
+    },
+    "/worker": {
+      "get": {
+        "tags": [
+          "worker-controller"
+        ],
+        "operationId": "getAll_3",
+        "responses": {
+          "200": {
+            "description": "Get all workers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Worker"
+                  }
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "worker-controller"
+        ],
+        "operationId": "save_2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Worker"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Storage a worker",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Worker"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "worker-controller"
+        ],
+        "operationId": "removeAll_2",
+        "responses": {
+          "200": {
+            "description": "Delete all workers"
+          },
+          "400": {
+            "description": "Operation failed"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "MsProfession": {
+        "type": "object",
+        "properties": {
+          "createdBy": {
+            "type": "string"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifiedBy": {
+            "type": "string"
+          },
+          "modifiedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "specializations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MsSpecialization"
+            }
+          }
+        }
+      },
+      "MsSpecialization": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "ProfIdentity": {
+        "type": "object",
+        "properties": {
+          "document": {
+            "type": "string"
+          },
+          "documentType": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "locationId": {
+            "type": "string"
+          }
+        }
+      },
+      "Profession": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "specializations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Specialization"
+            }
+          }
+        }
+      },
+      "Professional": {
+        "type": "object",
+        "properties": {
+          "createdBy": {
+            "type": "string"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifiedBy": {
+            "type": "string"
+          },
+          "modifiedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "contactPhone": {
+            "type": "string"
+          },
+          "profIdentity": {
+            "$ref": "#/components/schemas/ProfIdentity"
+          },
+          "professions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Profession"
+            }
+          }
+        }
+      },
+      "Specialization": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "Worker": {
+        "required": [
+          "creationDate",
+          "lastName",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "maxLength": 40,
+            "minLength": 3,
+            "pattern": "^[a-zA-Z]{4,}(?: [a-zA-Z])?$",
+            "type": "string"
+          },
+          "lastName": {
+            "maxLength": 40,
+            "minLength": 3,
+            "pattern": "^[a-zA-Z]{4,}(?: [a-zA-Z])?$",
+            "type": "string"
+          },
+          "birthDay": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "professions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Profession"
+            }
+          }
+        }
+      }
+    }
+  }
+}
