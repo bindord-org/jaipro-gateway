@@ -1,6 +1,6 @@
 package com.bindord.eureka.gateway.domain.exception;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
 
@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ApiError {
 
     private HttpStatus status;
