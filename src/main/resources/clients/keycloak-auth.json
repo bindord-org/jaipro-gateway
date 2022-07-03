@@ -170,6 +170,7 @@
           "email": {
             "maxLength": 60,
             "minLength": 7,
+            "format": "email",
             "type": "string"
           },
           "password": {

@@ -19,6 +19,7 @@
         <openapi-generator-version>6.0.0</openapi-generator-version>
         <spring-cloud.version>2021.0.1</spring-cloud.version>
         <spring-cloud-kubernetes.version>1.1.6.RELEASE</spring-cloud-kubernetes.version>
+        <validation-api.version>2.0.2</validation-api.version>
     </properties>
 
     <dependencies>
@@ -170,6 +171,8 @@
                             <configOptions>
                                 <apiPackage>${project.groupId}.proxy.eureka.main</apiPackage>
                                 <modelPackage>${project.groupId}.keycloak.auth.model</modelPackage>
+                                <performBeanValidation>true</performBeanValidation>
+                                <useBeanValidation>true</useBeanValidation>
                             </configOptions>
                         </configuration>
                     </execution>

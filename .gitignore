@@ -4,6 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### Logs
+eureka_auth_logs/
+
 ### STS ###
 .apt_generated
 .classpath
