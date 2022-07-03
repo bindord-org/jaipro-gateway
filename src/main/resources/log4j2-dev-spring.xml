@@ -2,7 +2,7 @@
 <Configuration status="WARN" monitorInterval="30">
     <Properties>
         <Property name="LOG_PATH">
-            eureka_auth_logs
+            eureka_gateway_logs
         </Property>
         <Property name="LOG_PATTERN">
             [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} --- [%15.15t] %-40.40c{1.} : %m%n%ex

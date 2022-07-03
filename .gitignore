@@ -5,7 +5,7 @@ target/
 !**/src/test/**/target/
 
 ### Logs
-eureka_auth_logs/
+eureka_gateway_logs/
 
 ### STS ###
 .apt_generated
