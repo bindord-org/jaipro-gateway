@@ -13,8 +13,25 @@ gateway:
         writeTimeout: 1000
         connectionTimeout: 300
       resource-server:
-        url: http://localhost:8090/eureka/resource-server/v1
+        url: http://localhost:8080/eureka/resource-server/v1
         readTimeout: 7000
         writeTimeout: 1000
         connectionTimeout: 300
+      authentication:
+        url: http://localhost:9010/eureka/authentication/v1
+        readTimeout: 7000
+        writeTimeout: 1000
+        connectionTimeout: 300
+
+eureka:
+  propagate:
+    headers:
+      - authorization
+      - request-id
+      - service-caller
+      - country-origin
+  cors:
+    address:
+      - http://localhost:8080
+      - http://181.64.90.211:8080
 

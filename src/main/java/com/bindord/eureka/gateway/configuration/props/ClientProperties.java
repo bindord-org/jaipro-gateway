@@ -1,4 +1,4 @@
-package com.bindord.eureka.gateway.configuration;
+package com.bindord.eureka.gateway.configuration.props;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,12 +15,14 @@ public class ClientProperties {
 
     private ClientConfig resourceServer;
 
+    private ClientConfig authentication;
+
     @Getter
     @Setter
     public static class ClientConfig {
         private String url;
-        private String readTimeout;
-        private String writeTimeout;
-        private String connectionTimeout;
+        private Integer readTimeout;
+        private Integer writeTimeout;
+        private Integer connectionTimeout;
     }
 }

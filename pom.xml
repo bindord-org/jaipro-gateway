@@ -176,6 +176,36 @@
                             </configOptions>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>eureka_resource_server_swagger_generation</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/clients/eureka_auth.json</inputSpec>
+                            <generatorName>java</generatorName>
+                            <library>retrofit2</library>
+                            <generateApis>false</generateApis>
+                            <generateApiTests>false</generateApiTests>
+                            <generateSupportingFiles>false</generateSupportingFiles>
+                            <generateModelDocumentation>false</generateModelDocumentation>
+                            <generateModels>true</generateModels>
+                            <generateModelTests>false</generateModelTests>
+                            <configOptions>
+                                <apiPackage>${project.groupId}.proxy.eureka.main</apiPackage>
+                                <modelPackage>${project.groupId}.auth.model</modelPackage>
+                                <performBeanValidation>true</performBeanValidation>
+                                <useBeanValidation>false</useBeanValidation>
+                            </configOptions>
+                            <typeMappings>
+                                <typeMapping>OffsetDateTime=LocalDateTime</typeMapping>
+                            </typeMappings>
+                            <importMappings>
+                                <importMapping>java.time.OffsetDateTime=java.time.LocalDateTime</importMapping>
+                            </importMappings>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>

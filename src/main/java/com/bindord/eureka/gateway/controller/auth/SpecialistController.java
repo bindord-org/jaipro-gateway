@@ -1,8 +1,8 @@
 package com.bindord.eureka.gateway.controller.auth;
 
+import com.bindord.eureka.auth.model.Specialist;
+import com.bindord.eureka.auth.model.SpecialistPersist;
 import com.bindord.eureka.gateway.wsc.AuthClientConfiguration;
-import com.bindord.eureka.keycloak.auth.model.UserLogin;
-import com.bindord.eureka.keycloak.auth.model.UserToken;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,24 +17,25 @@ import javax.validation.Valid;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("${service.ingress.context-path}/auth")
+@RequestMapping("${service.ingress.context-path}/specialist")
 @Slf4j
-public class AuthenticationController {
+public class SpecialistController {
 
     private final AuthClientConfiguration authClientConfiguration;
 
-    @ApiResponse(description = "Authentication an user",
+    @ApiResponse(description = "Persist a specialist",
             responseCode = "200")
-    @PostMapping(value = "/login",
+    @PostMapping(value = "",
             produces = {MediaType.APPLICATION_JSON_VALUE},
             consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public Mono<UserToken> login(@Valid @RequestBody UserLogin userLogin) {
-        return authClientConfiguration.init().post()
-                .uri("/auth/login")
+    public Mono<Specialist> login(@Valid @RequestBody SpecialistPersist specialist) {
+        return authClientConfiguration.init()
+                .post()
+                .uri("/specialist")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .body(Mono.just(userLogin), UserLogin.class)
+                .body(Mono.just(specialist), SpecialistPersist.class)
                 .retrieve()
-                .bodyToMono(UserToken.class);
+                .bodyToMono(Specialist.class);
     }
 }

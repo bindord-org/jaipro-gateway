@@ -5,9 +5,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+
+import static com.bindord.eureka.gateway.configuration.JacksonFactory.getObjectMapper;
 
 @Component
 @Aspect
@@ -15,6 +19,7 @@ import org.springframework.stereotype.Component;
 public class AspectController {
 
     private static final Logger LOGGER = LogManager.getLogger(AspectController.class);
+    private static final ObjectMapper mapper = getObjectMapper();
 
     @Before(value = "within(com.bindord.eureka.gateway.controller..*) && !@annotation(com.bindord.eureka.gateway.annotation.NoLogging)",
             argNames = "joinPoint")
@@ -22,7 +27,6 @@ public class AspectController {
         String caller = joinPoint.getSignature().toShortString();
         LOGGER.info(caller + " method called.");
         if (LOGGER.isInfoEnabled()) {
-            final ObjectMapper mapper = new ObjectMapper();
 
             Object[] signatureArgs = joinPoint.getArgs();
 
