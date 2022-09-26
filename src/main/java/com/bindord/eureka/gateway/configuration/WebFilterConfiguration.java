@@ -23,7 +23,7 @@ public class WebFilterConfiguration {
     }
 
     @Bean
-    public WebFilter openTracingFilter() {
+    public WebFilter webFilterImplementation() {
         return new CustomWebFilter(headersCommon.getHeaders());
     }
 

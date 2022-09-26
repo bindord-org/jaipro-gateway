@@ -1,6 +1,7 @@
 spring:
   profiles:
-    active: dev
+    active: debug
+
 server:
   port: 8000
 
@@ -26,12 +27,17 @@ gateway:
 eureka:
   propagate:
     headers:
+      - content-type
+      - accept
+      - x-requested-with
       - authorization
       - request-id
       - service-caller
       - country-origin
+
   cors:
     address:
       - http://localhost:8080
+      - http://localhost:9010
       - http://181.64.90.211:8080
 

@@ -1,6 +1,5 @@
 package com.bindord.eureka.gateway.configuration;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -15,22 +14,21 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @Profile(value = "!nosec")
 public class SecurityConfiguration {
 
-    @Value("${service.ingress.context-path}")
-    private String svcContextPath;
+    private final CorsCustomConfiguration corsConfiguration;
 
-    @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri:#{null}}")
-    private String jwtIssuerURI;
+    public SecurityConfiguration(CorsCustomConfiguration corsConfiguration) {
+        this.corsConfiguration = corsConfiguration;
+    }
 
     @Bean()
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
-        http.csrf().disable();
+        http.csrf().disable()
+                .cors().configurationSource(corsConfiguration.corsConfigurationSource());
         http
                 .authorizeExchange()
                 .pathMatchers("/webjars/**").permitAll()
                 .pathMatchers("/swagger**").permitAll()
                 .pathMatchers("/v3/**").permitAll()
-                .pathMatchers("/eureka/gateway/v1/auth**").permitAll()
-                .pathMatchers("/eureka/gateway/v1/auth/**").permitAll()
                 .pathMatchers("/actuator/**").permitAll()
                 .anyExchange().authenticated()
                 .and()
