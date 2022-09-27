@@ -19,7 +19,7 @@ gateway:
         writeTimeout: 1000
         connectionTimeout: 300
       authentication:
-        url: http://localhost:9010/eureka/authentication/v1
+        url: https://api.dev.perueduca.digital.otic.pe/pe-user-accounts/v1
         readTimeout: 7000
         writeTimeout: 1000
         connectionTimeout: 300

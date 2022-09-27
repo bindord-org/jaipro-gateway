@@ -34,7 +34,7 @@ public class AspectController {
 //                mapper.enable(SerializationFeature.INDENT_OUTPUT);
                 try {
                     if (signatureArgs[i] != null) {
-                        LOGGER.info(">> Inputs > " + mapper.writeValueAsString(signatureArgs[i]));
+                        LOGGER.debug(">> Inputs > " + mapper.writeValueAsString(signatureArgs[i]));
                     }
 
                 } catch (JsonProcessingException e) {

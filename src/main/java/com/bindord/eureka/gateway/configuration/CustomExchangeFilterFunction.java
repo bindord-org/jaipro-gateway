@@ -18,7 +18,7 @@ public class CustomExchangeFilterFunction implements ExchangeFilterFunction {
 
     @Override
     public Mono<ClientResponse> filter(ClientRequest request, ExchangeFunction next) {
-        log.info("CustomExchangeFilterFunction - filter()");
+        log.debug("CustomExchangeFilterFunction - filter()");
         return new CustomClientResponseMono(request, next, headers);
     }
 }

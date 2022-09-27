@@ -1,8 +1,8 @@
 package com.bindord.eureka.gateway.controller.auth;
 
+import com.bindord.eureka.auth.model.Customer;
+import com.bindord.eureka.auth.model.CustomerPersist;
 import com.bindord.eureka.gateway.wsc.AuthClientConfiguration;
-import com.bindord.eureka.keycloak.auth.model.UserLogin;
-import com.bindord.eureka.keycloak.auth.model.UserToken;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,25 +18,26 @@ import javax.validation.Valid;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("${service.ingress.context-path}/auth")
+@RequestMapping("${service.ingress.context-path}/customer")
 @Slf4j
-public class AuthenticationController {
+public class CustomerController {
 
     private final AuthClientConfiguration authClientConfiguration;
 
-    @ApiResponse(description = "Authentication an user",
+    @ApiResponse(description = "Persist a customer",
             responseCode = "200")
-    @PostMapping(value = "/login",
+    @PostMapping(value = "",
             produces = {MediaType.APPLICATION_JSON_VALUE},
             consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public Mono<UserToken> login(@Valid @RequestBody UserLogin userLogin) {
-        return authClientConfiguration.init().post()
-                .uri("/auth/login")
+    public Mono<Customer> persistCustomer(@Valid @RequestBody CustomerPersist customer) {
+        return authClientConfiguration.init()
+                .post()
+                .uri("/customer")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .body(Mono.just(userLogin), UserLogin.class)
+                .body(Mono.just(customer), CustomerPersist.class)
                 .retrieve()
-                .bodyToMono(UserToken.class)
+                .bodyToMono(Customer.class)
                 .subscribeOn(Schedulers.boundedElastic());
     }
 }

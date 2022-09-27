@@ -37,7 +37,7 @@
         </RollingFile>
     </Appenders>
     <Loggers>
-        <Logger name="com.bindord.eureka.gateway.aop" level="info" additivity="false">
+        <Logger name="com.bindord.eureka.gateway.aop" level="debug" additivity="false">
             <AppenderRef ref="AppFileAppender"/>
             <AppenderRef ref="ConsoleAppender"/>
         </Logger>

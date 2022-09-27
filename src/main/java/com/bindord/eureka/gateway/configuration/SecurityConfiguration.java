@@ -26,6 +26,7 @@ public class SecurityConfiguration {
                 .cors().configurationSource(corsConfiguration.corsConfigurationSource());
         http
                 .authorizeExchange()
+                .pathMatchers("/**").permitAll()
                 .pathMatchers("/webjars/**").permitAll()
                 .pathMatchers("/swagger**").permitAll()
                 .pathMatchers("/v3/**").permitAll()
