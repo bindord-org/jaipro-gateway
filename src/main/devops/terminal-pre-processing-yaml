@@ -1,0 +1,4 @@
+sed -i 's/^/    /' application.yaml
+cat application.yaml >> configmap-template.yaml
+k apply -f ./application.yaml
+sed -ie "s/\SVC_NAME/SERVICE_NAME/" nw.yml

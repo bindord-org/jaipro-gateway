@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jaipro-resource-server
+  labels:
+    service: jaipro-resource-server
+  namespace: default
+spec:
+  rules:
+    - host: jaipro.pe
+      http:
+        paths:
+          - backend:
+              service:
+                name: jaipro-resource-server
+                port:
+                  number: 8080
+            path: SERVICE_INGRESS_CONTEXT_PATH
+            pathType: Prefix

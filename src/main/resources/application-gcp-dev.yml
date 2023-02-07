@@ -3,24 +3,24 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://host.docker.internal:30010/auth/realms/eureka
+          issuer-uri: http://34.71.32.155:8080/auth/realms/eureka
 
 gateway:
   services:
     eureka-clients:
       keycloak-auth:
-        url: http://localhost:8090/eureka/keycloak-auth/v1
+        url: http://34.121.169.113:8080/eureka/keycloak-auth/v1
         readTimeout: 7000
         writeTimeout: 1000
         connectionTimeout: 300
       resource-server:
-        url: http://localhost:8080/eureka/resource-server/v1
+        url: http://35.184.181.20:8080/eureka/resource-server/v1
         readTimeout: 7000
         writeTimeout: 1000
         connectionTimeout: 300
       authentication:
-        url: https://api.dev.perueduca.digital.otic.pe/pe-user-accounts/v1
-        readTimeout: 7000
+        url: http://34.29.1.179:8080/eureka/authentication/v1
+        readTimeout: 10000
         writeTimeout: 1000
         connectionTimeout: 300
 
@@ -32,9 +32,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: health, beans
+        include: health
 
 logging:
-  config: classpath:log4j2-debug-spring.xml
-  level:
-    org.springframework.web.cors.reactive.DefaultCorsProcessor: debug
+  config: classpath:log4j2-dev-spring.xml

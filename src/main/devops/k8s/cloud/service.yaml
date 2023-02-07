@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jaipro-gateway
+  namespace: jaipro
+spec:
+  type: LoadBalancer
+  ports:
+    - targetPort: 8000
+      port: 8080
+      nodePort: 31083
+  selector:
+    service: jaipro-gateway
+    type: backend

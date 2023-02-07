@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaipro-resource-server
+  labels:
+    service: jaipro-resource-server
+    app: jaipro
+    type: backend
+    consume: db
+    db: postgres
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      service: jaipro-resource-server
+      type: backend
+  template:
+    metadata:
+      name: jaipro-resource-server
+      labels:
+        service: jaipro-resource-server
+        type: backend
+    spec:
+      containers:
+        - name: jaipro-resource-server
+          image: peterzinho16/jaipro-resource-server
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: netty-port
+          resources:
+            requests:
+              cpu: 200m
+              memory: 200Mi
+            limits:
+              memory: 1024Mi
+              cpu: 500m
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 80
+            periodSeconds: 10
+            failureThreshold: 5
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 80
+            periodSeconds: 10
+            failureThreshold: 5
+          env:
+            - name: PG_URL
+              value: r2dbc:postgresql://localhost:5432/eureka?schema=default
+            - name: PG_USER
+              value: postgres
+            - name: PG_PWD
+              value: sql
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 50%
+      maxSurge: 50%

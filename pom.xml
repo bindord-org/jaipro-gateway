@@ -178,11 +178,12 @@
                                 <modelPackage>${project.groupId}.keycloak.auth.model</modelPackage>
                                 <performBeanValidation>true</performBeanValidation>
                                 <useBeanValidation>true</useBeanValidation>
+                                <serializableModel>jackson</serializableModel>
                             </configOptions>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>eureka_resource_server_swagger_generation</id>
+                        <id>eureka_authentication_swagger_generation</id>
                         <phase>generate-resources</phase>
                         <goals>
                             <goal>generate</goal>
@@ -211,7 +212,50 @@
                             </importMappings>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>eureka_resource_server_swagger_generation</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/clients/eureka-resource-server.json</inputSpec>
+                            <generatorName>java</generatorName>
+                            <library>retrofit2</library>
+                            <generateApis>false</generateApis>
+                            <generateApiTests>false</generateApiTests>
+                            <generateSupportingFiles>false</generateSupportingFiles>
+                            <generateModelDocumentation>false</generateModelDocumentation>
+                            <generateModels>true</generateModels>
+                            <generateModelTests>false</generateModelTests>
+                            <configOptions>
+                                <apiPackage>${project.groupId}.proxy.eureka.main</apiPackage>
+                                <modelPackage>${project.groupId}.resourceserver.model</modelPackage>
+                                <performBeanValidation>true</performBeanValidation>
+                                <useBeanValidation>false</useBeanValidation>
+                            </configOptions>
+                            <typeMappings>
+                                <typeMapping>OffsetDateTime=LocalDateTime</typeMapping>
+                            </typeMappings>
+                            <importMappings>
+                                <importMapping>java.time.OffsetDateTime=java.time.LocalDateTime</importMapping>
+                            </importMappings>
+                        </configuration>
+                    </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <to>
+                        <image>gcr.io/ancient-lattice-373518/${project.name}</image>
+                    </to>
+                    <container>
+                        <mainClass>${project.groupId}.${project.artifactId}.EurekaGatewayApplication</mainClass>
+                    </container>
+                </configuration>
             </plugin>
         </plugins>
     </build>

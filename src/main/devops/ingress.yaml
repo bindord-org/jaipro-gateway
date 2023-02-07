@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ${SVC_NAME}
+  labels:
+    service: ${SVC_NAME}
+  namespace: default
+spec:
+  rules:
+    - host: hogarep.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: ${SVC_NAME}
+                port:
+                  number: 8080
+            path: SERVICE_INGRESS_CONTEXT_PATH
+            pathType: Prefix

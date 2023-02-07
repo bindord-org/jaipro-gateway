@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${SVC_NAME}
+  labels:
+    service: eureka-authentication
+    app: hogarep
+    type: backend
+    consume: db
+    db: mongo
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      service: ${SVC_NAME}
+      type: backend
+  template:
+    metadata:
+      name: ${SVC_NAME}
+      labels:
+        service: ${SVC_NAME}
+        type: backend
+    spec:
+      containers:
+        - name: ${SVC_NAME}
+          image: ${SVC_IMAGE}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: netty-port
+          resources:
+            requests:
+              cpu: 200m
+              memory: 200Mi
+            limits:
+              memory: 600Mi
+              cpu: "2"
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          env:
+            - name: SERVER_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: secret-eureka-authentication
+                  key: SERVER_PORT
+            - name: SPRING_DATA_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: secret-eureka-authentication
+                  key: SPRING_DATA_MONGODB_URI
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 50%
+      maxSurge: 50%
