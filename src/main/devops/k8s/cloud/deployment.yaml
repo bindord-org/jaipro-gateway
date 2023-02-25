@@ -25,7 +25,7 @@ spec:
       containers:
         - name: jaipro-gateway
           image: gcr.io/ancient-lattice-373518/eureka-gateway
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
               name: netty-port

@@ -20,6 +20,7 @@
         <spring-cloud.version>2021.0.1</spring-cloud.version>
         <spring-cloud-kubernetes.version>1.1.6.RELEASE</spring-cloud-kubernetes.version>
         <validation-api.version>2.0.2</validation-api.version>
+        <gcp-project-id>ancient-lattice-373518</gcp-project-id>
     </properties>
 
     <dependencies>
@@ -249,8 +250,11 @@
                 <artifactId>jib-maven-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
+                    <from>
+                        <image>gcr.io/${gcp-project-id}/ms-base-image</image>
+                    </from>
                     <to>
-                        <image>gcr.io/ancient-lattice-373518/${project.name}</image>
+                        <image>gcr.io/${gcp-project-id}/${project.name}</image>
                     </to>
                     <container>
                         <mainClass>${project.groupId}.${project.artifactId}.EurekaGatewayApplication</mainClass>

@@ -21,4 +21,5 @@ eureka:
       - http://localhost:8080
       - http://localhost:9010
       - http://181.64.90.211:8080
+      - http://ancient-lattice-373518.uc.r.appspot.com
 
