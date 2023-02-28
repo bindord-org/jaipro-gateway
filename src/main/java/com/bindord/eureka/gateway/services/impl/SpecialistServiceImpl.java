@@ -1,6 +1,5 @@
 package com.bindord.eureka.gateway.services.impl;
 
-//import com.bindord.eureka.auth.model.SpecialistPersist;
 import com.bindord.eureka.gateway.advice.CustomValidationException;
 import com.bindord.eureka.gateway.services.SpecialistService;
 import com.bindord.eureka.gateway.wsc.ResourceServerClientConfiguration;
