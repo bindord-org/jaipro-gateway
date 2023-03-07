@@ -32,8 +32,8 @@
           "required": true
         },
         "responses": {
-          "400": {
-            "description": "Bad Request",
+          "404": {
+            "description": "Not Found",
             "content": {
               "*/*": {
                 "schema": {
@@ -52,8 +52,8 @@
               }
             }
           },
-          "404": {
-            "description": "Not Found",
+          "400": {
+            "description": "Bad Request",
             "content": {
               "*/*": {
                 "schema": {
@@ -68,119 +68,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Customer"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/eureka/authentication/v1/this-is-why-we-play": {
-      "get": {
-        "tags": [
-          "this-is-why-we-play-controller"
-        ],
-        "operationId": "letsDoThis",
-        "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/eureka/authentication/v1/specialist": {
-      "post": {
-        "tags": [
-          "specialist-controller"
-        ],
-        "operationId": "save_1",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SpecialistPersist"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "Persist a specialist",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Specialist"
                 }
               }
             }
@@ -205,8 +92,8 @@
           "required": true
         },
         "responses": {
-          "400": {
-            "description": "Bad Request",
+          "404": {
+            "description": "Not Found",
             "content": {
               "*/*": {
                 "schema": {
@@ -225,8 +112,8 @@
               }
             }
           },
-          "404": {
-            "description": "Not Found",
+          "400": {
+            "description": "Bad Request",
             "content": {
               "*/*": {
                 "schema": {
@@ -241,6 +128,179 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UserToken"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eureka/authentication/v1/auth/refresh-token": {
+      "post": {
+        "tags": [
+          "authentication-controller"
+        ],
+        "operationId": "refreshToken",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshToken"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Refresh access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserToken"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eureka/authentication/v1/specialist": {
+      "post": {
+        "tags": [
+          "specialist-controller"
+        ],
+        "operationId": "save_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SpecialistPersist"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Persist a specialist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Specialist"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eureka/authentication/v1/this-is-why-we-play": {
+      "get": {
+        "tags": [
+          "this-is-why-we-play-controller"
+        ],
+        "operationId": "letsDoThis",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -566,6 +626,88 @@
           }
         }
       },
+      "UserLogin": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "maxLength": 60,
+            "minLength": 7,
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 50,
+            "minLength": 8,
+            "type": "string"
+          }
+        }
+      },
+      "UserToken": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "expiresIn": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "refreshExpiresIn": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "refreshToken": {
+            "type": "string"
+          },
+          "tokenType": {
+            "type": "string"
+          },
+          "idToken": {
+            "type": "string"
+          },
+          "notBeforePolicy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sessionState": {
+            "type": "string"
+          },
+          "otherClaims": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "scope": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          },
+          "errorDescription": {
+            "type": "string"
+          },
+          "errorUri": {
+            "type": "string"
+          }
+        }
+      },
+      "RefreshToken": {
+        "required": [
+          "refreshToken"
+        ],
+        "type": "object",
+        "properties": {
+          "refreshToken": {
+            "maxLength": 9999,
+            "minLength": 1,
+            "type": "string"
+          }
+        }
+      },
       "Experience": {
         "required": [
           "professionId",
@@ -875,75 +1017,6 @@
           "districtId": {
             "type": "integer",
             "format": "int32"
-          }
-        }
-      },
-      "UserLogin": {
-        "required": [
-          "email",
-          "password"
-        ],
-        "type": "object",
-        "properties": {
-          "email": {
-            "maxLength": 60,
-            "minLength": 7,
-            "type": "string"
-          },
-          "password": {
-            "maxLength": 50,
-            "minLength": 8,
-            "type": "string"
-          }
-        }
-      },
-      "UserToken": {
-        "type": "object",
-        "properties": {
-          "token": {
-            "type": "string"
-          },
-          "expiresIn": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "refreshExpiresIn": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "refreshToken": {
-            "type": "string"
-          },
-          "tokenType": {
-            "type": "string"
-          },
-          "idToken": {
-            "type": "string"
-          },
-          "notBeforePolicy": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "sessionState": {
-            "type": "string"
-          },
-          "otherClaims": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object"
-            }
-          },
-          "scope": {
-            "type": "string"
-          },
-          "error": {
-            "type": "string"
-          },
-          "errorDescription": {
-            "type": "string"
-          },
-          "errorUri": {
-            "type": "string"
           }
         }
       }

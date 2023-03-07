@@ -1,5 +1,6 @@
 package com.bindord.eureka.gateway.controller.auth;
 
+import com.bindord.eureka.auth.model.RefreshToken;
 import com.bindord.eureka.gateway.wsc.AuthClientConfiguration;
 import com.bindord.eureka.keycloak.auth.model.UserLogin;
 import com.bindord.eureka.keycloak.auth.model.UserToken;
@@ -35,6 +36,22 @@ public class AuthenticationController {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .body(Mono.just(userLogin), UserLogin.class)
+                .retrieve()
+                .bodyToMono(UserToken.class)
+                .subscribeOn(Schedulers.boundedElastic());
+    }
+
+    @ApiResponse(description = "Refresh access token",
+            responseCode = "200")
+    @PostMapping(value = "/refresh-token",
+            produces = {MediaType.APPLICATION_JSON_VALUE},
+            consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public Mono<UserToken> refreshToken(@Valid @RequestBody RefreshToken refreshToken) {
+        return authClientConfiguration.init().post()
+                .uri("/auth/refresh-token")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .body(Mono.just(refreshToken), RefreshToken.class)
                 .retrieve()
                 .bodyToMono(UserToken.class)
                 .subscribeOn(Schedulers.boundedElastic());

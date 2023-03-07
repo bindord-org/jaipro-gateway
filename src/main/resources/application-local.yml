@@ -1,0 +1,38 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://34.71.32.155:8080/auth/realms/eureka
+
+gateway:
+  services:
+    eureka-clients:
+      keycloak-auth:
+        url: http://localhost:8090/eureka/keycloak-auth/v1
+        readTimeout: 7000
+        writeTimeout: 1000
+        connectionTimeout: 300
+      resource-server:
+        url: http://localhost:8080/eureka/resource-server/v1
+        readTimeout: 7000
+        writeTimeout: 1000
+        connectionTimeout: 300
+      authentication:
+        url: http://localhost:9010/eureka/authentication/v1
+        readTimeout: 10000
+        writeTimeout: 1000
+        connectionTimeout: 300
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+logging:
+  config: classpath:log4j2-dev-spring.xml
