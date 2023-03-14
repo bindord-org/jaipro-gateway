@@ -1,10 +1,14 @@
 package com.bindord.eureka.gateway.advice;
 
+import com.bindord.eureka.gateway.configuration.JacksonFactory;
 import com.bindord.eureka.gateway.domain.exception.ApiError;
 import com.bindord.eureka.gateway.domain.exception.ApiSubError;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,6 +21,7 @@ import reactor.core.publisher.Mono;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @RestControllerAdvice
 public class ExceptionControllerAdvice {
 
@@ -34,28 +39,35 @@ public class ExceptionControllerAdvice {
         for (FieldError x : ex.getBindingResult().getFieldErrors()) {
             errors.add(new ApiSubError(x.getObjectName(), x.getField(), x.getRejectedValue(), x.getDefaultMessage()));
         }
-        return Mono.just(new ApiError(HttpStatus.BAD_REQUEST, BINDING_ERROR, errors));
+        return Mono.just(new ApiError(BINDING_ERROR, errors));
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(IllegalArgumentException.class)
     public Mono<ApiError> handleBindException(IllegalArgumentException ex) {
-        return Mono.just(new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage(), ex));
+        return Mono.just(new ApiError(ex.getMessage(), ex));
     }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NotFoundValidationException.class)
     public @ResponseBody
     Mono<ApiError> handlerNotFoundValidationException(NotFoundValidationException ex) {
-        return Mono.just(new ApiError(HttpStatus.NOT_FOUND, ex));
+        return Mono.just(new ApiError(ex));
     }
 
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(WebClientResponseException.class)
     public @ResponseBody
-    Mono<ApiError> handlerWebClientResponseException(WebClientResponseException ex) {
-        var apiErr = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage(), ex);
-        return Mono.just(apiErr);
+    Mono<ResponseEntity<ApiError>> handlerWebClientResponseException(WebClientResponseException ex) {
+        log.error("method {}", "handlerWebClientResponseException");
+        ApiError apiErr;
+        try {
+            apiErr = JacksonFactory.getObjectMapper().readValue(ex.getResponseBodyAsString(), ApiError.class);
+        } catch (JsonProcessingException e) {
+            log.error("failed to serialize ApiError object");
+            return Mono.just(ResponseEntity.status(ex.getStatusCode())
+                    .body(new ApiError(ex)));
+        }
+        return Mono.just(ResponseEntity.status(ex.getStatusCode()).body(apiErr));
     }
 }
 
