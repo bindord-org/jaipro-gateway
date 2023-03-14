@@ -10,13 +10,11 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
@@ -48,6 +46,16 @@ public class SpecialistController {
                 .subscribeOn(Schedulers.boundedElastic());
     }
 
+    @ApiResponse(description = "Update a specialist",
+            responseCode = "200")
+    @PutMapping(value = "",
+            produces = {MediaType.APPLICATION_JSON_VALUE},
+            consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public Mono<Specialist> updateSpecialist(@Valid @RequestBody SpecialistPersist specialist) throws  InterruptedException{
+        return specialistService.update(specialist);
+
+    }
+
     @ApiResponse(description = "Update a experience in specialist CV",
             responseCode = "200")
     @PutMapping(value = "experience",
@@ -64,13 +72,5 @@ public class SpecialistController {
                 .bodyToMono(SpecialistCv.class)
                 .subscribeOn(Schedulers.boundedElastic());
     }
-    @ApiResponse(description = "Update a specialist",
-            responseCode = "200")
-    @PutMapping(value = "",
-            produces = {MediaType.APPLICATION_JSON_VALUE},
-            consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public Mono<Specialist> updateSpecialist(@Valid @RequestBody SpecialistPersist specialist) throws  InterruptedException{
-        return specialistService.update(specialist);
 
-    }
 }
