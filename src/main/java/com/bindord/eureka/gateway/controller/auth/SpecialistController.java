@@ -53,7 +53,6 @@ public class SpecialistController {
             consumes = {MediaType.APPLICATION_JSON_VALUE})
     public Mono<Specialist> updateSpecialist(@Valid @RequestBody SpecialistPersist specialist) throws  InterruptedException{
         return specialistService.update(specialist);
-
     }
 
     @ApiResponse(description = "Update a experience in specialist CV",
@@ -72,5 +71,4 @@ public class SpecialistController {
                 .bodyToMono(SpecialistCv.class)
                 .subscribeOn(Schedulers.boundedElastic());
     }
-
 }
