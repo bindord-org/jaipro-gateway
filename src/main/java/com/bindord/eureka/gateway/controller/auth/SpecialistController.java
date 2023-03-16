@@ -1,9 +1,11 @@
 package com.bindord.eureka.gateway.controller.auth;
 
+import com.bindord.eureka.resourceserver.model.Specialist;
 import com.bindord.eureka.auth.model.SpecialistPersist;
 import com.bindord.eureka.gateway.services.SpecialistService;
 import com.bindord.eureka.gateway.wsc.AuthClientConfiguration;
-import com.bindord.eureka.resourceserver.model.Specialist;
+import com.bindord.eureka.resourceserver.model.SpecialistCv;
+import com.bindord.eureka.resourceserver.model.SpecialistCvDto;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -49,7 +51,24 @@ public class SpecialistController {
     @PutMapping(value = "",
             produces = {MediaType.APPLICATION_JSON_VALUE},
             consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public Mono<Specialist> updateSpecialist(@Valid @RequestBody SpecialistPersist specialist) throws InterruptedException {
+    public Mono<Specialist> updateSpecialist(@Valid @RequestBody SpecialistPersist specialist) throws  InterruptedException{
         return specialistService.update(specialist);
+    }
+
+    @ApiResponse(description = "Update a experience in specialist CV",
+            responseCode = "200")
+    @PutMapping(value = "experience",
+            produces = {MediaType.APPLICATION_JSON_VALUE},
+            consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public Mono<SpecialistCv> updateExperience(@Valid @RequestBody SpecialistCvDto specialistCvDto) {
+        return authClientConfiguration.init()
+                .put()
+                .uri("/specialist-cv/update-experience")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .body(Mono.just(specialistCvDto), SpecialistCvDto.class)
+                .retrieve()
+                .bodyToMono(SpecialistCv.class)
+                .subscribeOn(Schedulers.boundedElastic());
     }
 }
