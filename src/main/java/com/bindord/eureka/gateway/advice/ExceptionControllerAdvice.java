@@ -31,6 +31,7 @@ public class ExceptionControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(WebExchangeBindException.class)
     public Mono<ApiError> handleBindException(WebExchangeBindException ex) {
+        log.error("method {}", "handleBindException(WebExchangeBindException)");
         ex.getModel().entrySet().forEach(e -> {
             LOGGER.warn(e.getKey() + ": " + e.getValue());
         });
@@ -45,6 +46,7 @@ public class ExceptionControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(IllegalArgumentException.class)
     public Mono<ApiError> handleBindException(IllegalArgumentException ex) {
+        log.error("method {}", "handlerNotFoundValidationException(IllegalArgumentException)");
         return Mono.just(new ApiError(ex.getMessage(), ex));
     }
 
@@ -52,6 +54,7 @@ public class ExceptionControllerAdvice {
     @ExceptionHandler(NotFoundValidationException.class)
     public @ResponseBody
     Mono<ApiError> handlerNotFoundValidationException(NotFoundValidationException ex) {
+        log.error("method {}", "handlerNotFoundValidationException");
         return Mono.just(new ApiError(ex));
     }
 
