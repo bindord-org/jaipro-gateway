@@ -3481,7 +3481,6 @@
       },
       "SpecialistDto": {
         "required": [
-          "about",
           "address",
           "document",
           "email",
@@ -3549,12 +3548,6 @@
             "type": "integer",
             "format": "int32",
             "example": 1
-          },
-          "about": {
-            "type": "string"
-          },
-          "profilePhoto": {
-            "$ref": "#/components/schemas/Photo"
           }
         }
       },
