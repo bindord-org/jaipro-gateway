@@ -15,99 +15,39 @@
     }
   ],
   "paths": {
-    "/eureka/authentication/v1/auth/refresh-token": {
+    "/eureka/authentication/v1/customer": {
       "post": {
         "tags": [
-          "authentication-controller"
-        ],
-        "operationId": "refreshToken",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RefreshToken"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "Refresh access token",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserToken"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/eureka/authentication/v1/specialist": {
-      "post": {
-        "tags": [
-          "specialist-controller"
+          "customer-controller"
         ],
         "operationId": "save",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SpecialistPersist"
+                "$ref": "#/components/schemas/CustomerPersist"
               }
             }
           },
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
           "400": {
             "description": "Bad Request",
             "content": {
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -123,71 +63,11 @@
             }
           },
           "200": {
-            "description": "Persist a specialist",
+            "description": "Persist a customer",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Specialist"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/eureka/authentication/v1/auth/login": {
-      "post": {
-        "tags": [
-          "authentication-controller"
-        ],
-        "operationId": "login",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UserLogin"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "Authentication an user",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserToken"
+                  "$ref": "#/components/schemas/Customer"
                 }
               }
             }
@@ -202,22 +82,22 @@
         ],
         "operationId": "letsDoThis",
         "responses": {
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
           "400": {
             "description": "Bad Request",
             "content": {
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -248,39 +128,39 @@
         }
       }
     },
-    "/eureka/authentication/v1/customer": {
+    "/eureka/authentication/v1/auth/refresh-token": {
       "post": {
         "tags": [
-          "customer-controller"
+          "authentication-controller"
         ],
-        "operationId": "save_1",
+        "operationId": "refreshToken",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CustomerPersist"
+                "$ref": "#/components/schemas/RefreshToken"
               }
             }
           },
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
           "400": {
             "description": "Bad Request",
             "content": {
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -296,11 +176,131 @@
             }
           },
           "200": {
-            "description": "Persist a customer",
+            "description": "Refresh access token",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Customer"
+                  "$ref": "#/components/schemas/UserToken"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eureka/authentication/v1/auth/login": {
+      "post": {
+        "tags": [
+          "authentication-controller"
+        ],
+        "operationId": "login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLogin"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Authentication an user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthUser"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eureka/authentication/v1/specialist": {
+      "post": {
+        "tags": [
+          "specialist-controller"
+        ],
+        "operationId": "save_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SpecialistPersist"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Persist a specialist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Specialist"
                 }
               }
             }
@@ -311,17 +311,6 @@
   },
   "components": {
     "schemas": {
-      "ErrorResponse": {
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string"
-          },
-          "code": {
-            "type": "string"
-          }
-        }
-      },
       "ApiError": {
         "type": "object",
         "properties": {
@@ -356,6 +345,210 @@
           },
           "message": {
             "type": "string"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          }
+        }
+      },
+      "CustomerPersist": {
+        "required": [
+          "email",
+          "lastName",
+          "name",
+          "password",
+          "phone",
+          "publicUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "maxLength": 36,
+            "minLength": 2,
+            "type": "string"
+          },
+          "lastName": {
+            "maxLength": 36,
+            "minLength": 2,
+            "type": "string"
+          },
+          "identity": {
+            "minimum": 0,
+            "type": "integer",
+            "format": "int32"
+          },
+          "gender": {
+            "maximum": 2,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "address": {
+            "maxLength": 127,
+            "minLength": 2,
+            "type": "string"
+          },
+          "email": {
+            "maxLength": 60,
+            "minLength": 7,
+            "type": "string"
+          },
+          "document": {
+            "maxLength": 12,
+            "minLength": 8,
+            "type": "string"
+          },
+          "phone": {
+            "maxLength": 15,
+            "minLength": 9,
+            "type": "string"
+          },
+          "profilePhoto": {
+            "$ref": "#/components/schemas/Photo"
+          },
+          "publicUrl": {
+            "maxLength": 127,
+            "minLength": 7,
+            "type": "string"
+          },
+          "verifiedEmail": {
+            "type": "boolean"
+          },
+          "districtId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "password": {
+            "maxLength": 50,
+            "minLength": 8,
+            "type": "string"
+          }
+        }
+      },
+      "Photo": {
+        "required": [
+          "size",
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 50,
+            "minLength": 3,
+            "type": "string"
+          },
+          "size": {
+            "maximum": 4194304,
+            "minimum": 5080,
+            "type": "integer",
+            "format": "int32"
+          },
+          "url": {
+            "maxLength": 200,
+            "minLength": 36,
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Customer": {
+        "required": [
+          "email",
+          "lastName",
+          "name",
+          "phone",
+          "publicUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "createdBy": {
+            "type": "string"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifiedBy": {
+            "type": "string"
+          },
+          "modifiedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "maxLength": 36,
+            "minLength": 2,
+            "type": "string"
+          },
+          "lastName": {
+            "maxLength": 36,
+            "minLength": 2,
+            "type": "string"
+          },
+          "identity": {
+            "minimum": 0,
+            "type": "integer",
+            "format": "int32"
+          },
+          "gender": {
+            "maximum": 2,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "address": {
+            "maxLength": 127,
+            "minLength": 2,
+            "type": "string"
+          },
+          "email": {
+            "maxLength": 60,
+            "minLength": 7,
+            "type": "string"
+          },
+          "document": {
+            "maxLength": 12,
+            "minLength": 8,
+            "type": "string"
+          },
+          "phone": {
+            "maxLength": 15,
+            "minLength": 9,
+            "type": "string"
+          },
+          "profilePhoto": {
+            "type": "object"
+          },
+          "publicUrl": {
+            "maxLength": 127,
+            "minLength": 7,
+            "type": "string"
+          },
+          "verifiedEmail": {
+            "type": "boolean"
+          },
+          "districtId": {
+            "type": "integer",
+            "format": "int32"
           }
         }
       },
@@ -422,6 +615,82 @@
           }
         }
       },
+      "UserLogin": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "maxLength": 60,
+            "minLength": 7,
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 50,
+            "minLength": 8,
+            "type": "string"
+          }
+        }
+      },
+      "AuthUser": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "expiresIn": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "refreshExpiresIn": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "refreshToken": {
+            "type": "string"
+          },
+          "tokenType": {
+            "type": "string"
+          },
+          "idToken": {
+            "type": "string"
+          },
+          "notBeforePolicy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sessionState": {
+            "type": "string"
+          },
+          "otherClaims": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "scope": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          },
+          "errorDescription": {
+            "type": "string"
+          },
+          "errorUri": {
+            "type": "string"
+          },
+          "profileType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "profileName": {
+            "type": "string"
+          }
+        }
+      },
       "Experience": {
         "required": [
           "professionId",
@@ -441,35 +710,6 @@
           "time": {
             "type": "integer",
             "format": "int32"
-          },
-          "date": {
-            "type": "string",
-            "format": "date-time"
-          }
-        }
-      },
-      "Photo": {
-        "required": [
-          "size",
-          "url"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "maxLength": 50,
-            "minLength": 3,
-            "type": "string"
-          },
-          "size": {
-            "maximum": 4194304,
-            "minimum": 5080,
-            "type": "integer",
-            "format": "int32"
-          },
-          "url": {
-            "maxLength": 200,
-            "minLength": 36,
-            "type": "string"
           },
           "date": {
             "type": "string",
@@ -539,7 +779,6 @@
       },
       "SpecialistPersist": {
         "required": [
-          "about",
           "address",
           "document",
           "email",
@@ -609,12 +848,6 @@
           "districtId": {
             "type": "integer",
             "format": "int32"
-          },
-          "about": {
-            "type": "string"
-          },
-          "profilePhoto": {
-            "$ref": "#/components/schemas/Photo"
           },
           "password": {
             "maxLength": 50,
@@ -763,189 +996,6 @@
           },
           "ratings": {
             "type": "object"
-          },
-          "districtId": {
-            "type": "integer",
-            "format": "int32"
-          }
-        }
-      },
-      "UserLogin": {
-        "required": [
-          "email",
-          "password"
-        ],
-        "type": "object",
-        "properties": {
-          "email": {
-            "maxLength": 60,
-            "minLength": 7,
-            "type": "string"
-          },
-          "password": {
-            "maxLength": 50,
-            "minLength": 8,
-            "type": "string"
-          }
-        }
-      },
-      "CustomerPersist": {
-        "required": [
-          "email",
-          "lastName",
-          "name",
-          "password",
-          "phone",
-          "publicUrl"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "name": {
-            "maxLength": 36,
-            "minLength": 2,
-            "type": "string"
-          },
-          "lastName": {
-            "maxLength": 36,
-            "minLength": 2,
-            "type": "string"
-          },
-          "identity": {
-            "minimum": 0,
-            "type": "integer",
-            "format": "int32"
-          },
-          "gender": {
-            "maximum": 2,
-            "minimum": 1,
-            "type": "integer",
-            "format": "int32"
-          },
-          "address": {
-            "maxLength": 127,
-            "minLength": 2,
-            "type": "string"
-          },
-          "email": {
-            "maxLength": 60,
-            "minLength": 7,
-            "type": "string"
-          },
-          "document": {
-            "maxLength": 12,
-            "minLength": 8,
-            "type": "string"
-          },
-          "phone": {
-            "maxLength": 15,
-            "minLength": 9,
-            "type": "string"
-          },
-          "profilePhoto": {
-            "$ref": "#/components/schemas/Photo"
-          },
-          "publicUrl": {
-            "maxLength": 127,
-            "minLength": 7,
-            "type": "string"
-          },
-          "verifiedEmail": {
-            "type": "boolean"
-          },
-          "districtId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "password": {
-            "maxLength": 50,
-            "minLength": 8,
-            "type": "string"
-          }
-        }
-      },
-      "Customer": {
-        "required": [
-          "email",
-          "lastName",
-          "name",
-          "phone",
-          "publicUrl"
-        ],
-        "type": "object",
-        "properties": {
-          "createdBy": {
-            "type": "string"
-          },
-          "creationDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "modifiedBy": {
-            "type": "string"
-          },
-          "modifiedDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "name": {
-            "maxLength": 36,
-            "minLength": 2,
-            "type": "string"
-          },
-          "lastName": {
-            "maxLength": 36,
-            "minLength": 2,
-            "type": "string"
-          },
-          "identity": {
-            "minimum": 0,
-            "type": "integer",
-            "format": "int32"
-          },
-          "gender": {
-            "maximum": 2,
-            "minimum": 1,
-            "type": "integer",
-            "format": "int32"
-          },
-          "address": {
-            "maxLength": 127,
-            "minLength": 2,
-            "type": "string"
-          },
-          "email": {
-            "maxLength": 60,
-            "minLength": 7,
-            "type": "string"
-          },
-          "document": {
-            "maxLength": 12,
-            "minLength": 8,
-            "type": "string"
-          },
-          "phone": {
-            "maxLength": 15,
-            "minLength": 9,
-            "type": "string"
-          },
-          "profilePhoto": {
-            "type": "object"
-          },
-          "publicUrl": {
-            "maxLength": 127,
-            "minLength": 7,
-            "type": "string"
-          },
-          "verifiedEmail": {
-            "type": "boolean"
           },
           "districtId": {
             "type": "integer",

@@ -1,5 +1,6 @@
 package com.bindord.eureka.gateway.controller.auth;
 
+import com.bindord.eureka.auth.model.AuthUser;
 import com.bindord.eureka.auth.model.RefreshToken;
 import com.bindord.eureka.gateway.wsc.AuthClientConfiguration;
 import com.bindord.eureka.keycloak.auth.model.UserLogin;
@@ -30,14 +31,14 @@ public class AuthenticationController {
     @PostMapping(value = "/login",
             produces = {MediaType.APPLICATION_JSON_VALUE},
             consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public Mono<UserToken> login(@Valid @RequestBody UserLogin userLogin) {
+    public Mono<AuthUser> login(@Valid @RequestBody UserLogin userLogin) {
         return authClientConfiguration.init().post()
                 .uri("/auth/login")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .body(Mono.just(userLogin), UserLogin.class)
                 .retrieve()
-                .bodyToMono(UserToken.class)
+                .bodyToMono(AuthUser.class)
                 .subscribeOn(Schedulers.boundedElastic());
     }
 
