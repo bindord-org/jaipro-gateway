@@ -16,10 +16,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.bind.support.WebExchangeBindException;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
+import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 @Slf4j
 @RestControllerAdvice
@@ -64,13 +67,21 @@ public class ExceptionControllerAdvice {
         log.error("method {}", "handlerWebClientResponseException");
         ApiError apiErr;
         try {
-            apiErr = JacksonFactory.getObjectMapper().readValue(ex.getResponseBodyAsString(), ApiError.class);
+            apiErr = JacksonFactory.getObjectMapper().readValue(ex.getResponseBodyAsString(UTF_8), ApiError.class);
         } catch (JsonProcessingException e) {
             log.error("failed to serialize ApiError object");
             return Mono.just(ResponseEntity.status(ex.getStatusCode())
                     .body(new ApiError(ex)));
         }
         return Mono.just(ResponseEntity.status(ex.getStatusCode()).body(apiErr));
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(ServerWebInputException.class)
+    public @ResponseBody
+    Mono<ApiError> handleServerWebInputException(ServerWebInputException ex) {
+        log.warn("method {}", "handleServerWebInputException");
+        return Mono.just(new ApiError(ex.getMessage(), ex));
     }
 }
 
