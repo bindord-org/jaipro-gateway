@@ -22,12 +22,15 @@
         ],
         "operationId": "findAll",
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "List workLocations",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WorkLocation"
+                  }
                 }
               }
             }
@@ -39,10 +42,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -59,15 +62,12 @@
               }
             }
           },
-          "200": {
-            "description": "List workLocations",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WorkLocation"
-                  }
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -90,12 +90,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Update a workLocation",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/WorkLocation"
                 }
               }
             }
@@ -107,10 +107,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -127,12 +127,12 @@
               }
             }
           },
-          "200": {
-            "description": "Update a workLocation",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/WorkLocation"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -155,12 +155,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Persist a workLocation",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/WorkLocation"
                 }
               }
             }
@@ -172,10 +172,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -192,12 +192,12 @@
               }
             }
           },
-          "200": {
-            "description": "Persist a workLocation",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/WorkLocation"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -212,12 +212,15 @@
         ],
         "operationId": "findAll_1",
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "List users info",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserInfo"
+                  }
                 }
               }
             }
@@ -229,10 +232,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -249,15 +252,12 @@
               }
             }
           },
-          "200": {
-            "description": "List users info",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/UserInfo"
-                  }
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -280,12 +280,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Update an user info",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/UserInfo"
                 }
               }
             }
@@ -297,10 +297,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -317,12 +317,12 @@
               }
             }
           },
-          "200": {
-            "description": "Update an user info",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserInfo"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -345,12 +345,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Persist an user info",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/UserInfo"
                 }
               }
             }
@@ -362,10 +362,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -382,12 +382,12 @@
               }
             }
           },
-          "200": {
-            "description": "Persist an user info",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserInfo"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -412,12 +412,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Update a specialistSpecialization",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "type": "boolean"
                 }
               }
             }
@@ -429,10 +429,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -449,12 +449,12 @@
               }
             }
           },
-          "200": {
-            "description": "Update a specialistSpecialization",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "type": "boolean"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -469,12 +469,15 @@
         ],
         "operationId": "findAll_2",
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "List specialistSpecializations",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SpecialistSpecialization"
+                  }
                 }
               }
             }
@@ -486,10 +489,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -506,15 +509,12 @@
               }
             }
           },
-          "200": {
-            "description": "List specialistSpecializations",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/SpecialistSpecialization"
-                  }
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -537,12 +537,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Update a specialistSpecialization",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/SpecialistSpecialization"
                 }
               }
             }
@@ -554,10 +554,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -574,12 +574,12 @@
               }
             }
           },
-          "200": {
-            "description": "Update a specialistSpecialization",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/SpecialistSpecialization"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -602,12 +602,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Persist a specialistSpecialization",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/SpecialistSpecialization"
                 }
               }
             }
@@ -619,10 +619,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -639,12 +639,12 @@
               }
             }
           },
-          "200": {
-            "description": "Persist a specialistSpecialization",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/SpecialistSpecialization"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -669,12 +669,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Update a experience specialist cv",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "type": "boolean"
                 }
               }
             }
@@ -686,10 +686,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -706,12 +706,12 @@
               }
             }
           },
-          "200": {
-            "description": "Update a experience specialist cv",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "type": "boolean"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -726,12 +726,15 @@
         ],
         "operationId": "findAll_3",
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "List specialist's cvs",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SpecialistCv"
+                  }
                 }
               }
             }
@@ -743,10 +746,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -763,15 +766,12 @@
               }
             }
           },
-          "200": {
-            "description": "List specialist's cvs",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/SpecialistCv"
-                  }
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -794,12 +794,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Update a specialist cv",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/SpecialistCv"
                 }
               }
             }
@@ -811,10 +811,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -831,12 +831,12 @@
               }
             }
           },
-          "200": {
-            "description": "Update a specialist cv",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/SpecialistCv"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -859,12 +859,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Persist a specialist cv",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/SpecialistCv"
                 }
               }
             }
@@ -876,10 +876,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -896,12 +896,12 @@
               }
             }
           },
-          "200": {
-            "description": "Persist a specialist cv",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/SpecialistCv"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -926,12 +926,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Update a specialist bank account",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/SpecialistBankAccount"
                 }
               }
             }
@@ -943,10 +943,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -963,12 +963,12 @@
               }
             }
           },
-          "200": {
-            "description": "Update a specialist bank account",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/SpecialistBankAccount"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -991,12 +991,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Persist a specialist bank account",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/SpecialistBankAccount"
                 }
               }
             }
@@ -1008,10 +1008,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -1028,12 +1028,12 @@
               }
             }
           },
-          "200": {
-            "description": "Persist a specialist bank account",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/SpecialistBankAccount"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1048,12 +1048,15 @@
         ],
         "operationId": "findAll_5",
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "List specialists",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Specialist"
+                  }
                 }
               }
             }
@@ -1065,10 +1068,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -1085,15 +1088,12 @@
               }
             }
           },
-          "200": {
-            "description": "List specialists",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Specialist"
-                  }
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1116,12 +1116,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Update a specialist",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/Specialist"
                 }
               }
             }
@@ -1133,10 +1133,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -1153,12 +1153,12 @@
               }
             }
           },
-          "200": {
-            "description": "Update a specialist",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/Specialist"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1181,12 +1181,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Persist a specialist",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/Specialist"
                 }
               }
             }
@@ -1198,10 +1198,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -1218,12 +1218,12 @@
               }
             }
           },
-          "200": {
-            "description": "Persist a specialist",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/Specialist"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1238,12 +1238,15 @@
         ],
         "operationId": "findAll_6",
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "List professions",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Profession"
+                  }
                 }
               }
             }
@@ -1255,10 +1258,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -1275,15 +1278,12 @@
               }
             }
           },
-          "200": {
-            "description": "List professions",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Profession"
-                  }
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1306,12 +1306,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Update a profession",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/Profession"
                 }
               }
             }
@@ -1323,10 +1323,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -1343,12 +1343,12 @@
               }
             }
           },
-          "200": {
-            "description": "Update a profession",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/Profession"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1371,12 +1371,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Persist a profession",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/Profession"
                 }
               }
             }
@@ -1388,10 +1388,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -1408,12 +1408,12 @@
               }
             }
           },
-          "200": {
-            "description": "Persist a profession",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/Profession"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1428,12 +1428,15 @@
         ],
         "operationId": "findAll_7",
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "List districts",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/District"
+                  }
                 }
               }
             }
@@ -1445,10 +1448,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -1465,15 +1468,12 @@
               }
             }
           },
-          "200": {
-            "description": "List districts",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/District"
-                  }
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1496,12 +1496,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Update a district",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/District"
                 }
               }
             }
@@ -1513,10 +1513,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -1533,12 +1533,12 @@
               }
             }
           },
-          "200": {
-            "description": "Update a district",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/District"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1561,12 +1561,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Persist a district",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/District"
                 }
               }
             }
@@ -1578,10 +1578,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -1598,12 +1598,280 @@
               }
             }
           },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eureka/resource-server/v1/customer/updatePhoto": {
+      "put": {
+        "tags": [
+          "customer-controller"
+        ],
+        "operationId": "updatePhoto",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerUpdatePhotoDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
           "200": {
-            "description": "Persist a district",
+            "description": "Update a customer photo",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/District"
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ApiError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eureka/resource-server/v1/customer/updatePassword": {
+      "put": {
+        "tags": [
+          "customer-controller"
+        ],
+        "operationId": "updatePassword",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerPasswordUpdateDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Update a customer password",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ApiError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eureka/resource-server/v1/customer/updateLocation": {
+      "put": {
+        "tags": [
+          "customer-controller"
+        ],
+        "operationId": "updateLocation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerLocationUpdateDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Update a customer location",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ApiError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eureka/resource-server/v1/customer/updateAbout": {
+      "put": {
+        "tags": [
+          "customer-controller"
+        ],
+        "operationId": "updateAbout",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerInformationUpdateDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Update a customer about",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ApiError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1618,12 +1886,15 @@
         ],
         "operationId": "findAll_8",
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "List customers",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Customer"
+                  }
                 }
               }
             }
@@ -1635,10 +1906,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -1655,15 +1926,12 @@
               }
             }
           },
-          "200": {
-            "description": "List customers",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Customer"
-                  }
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1686,12 +1954,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Update a customer",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/Customer"
                 }
               }
             }
@@ -1703,10 +1971,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -1723,12 +1991,12 @@
               }
             }
           },
-          "200": {
-            "description": "Update a customer",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/Customer"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1751,12 +2019,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Persist a customer",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/Customer"
                 }
               }
             }
@@ -1768,10 +2036,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -1788,12 +2056,12 @@
               }
             }
           },
-          "200": {
-            "description": "Persist a customer",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/Customer"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1808,12 +2076,15 @@
         ],
         "operationId": "findAll_9",
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "List countrys",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Country"
+                  }
                 }
               }
             }
@@ -1825,10 +2096,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -1845,15 +2116,12 @@
               }
             }
           },
-          "200": {
-            "description": "List countrys",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Country"
-                  }
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1876,12 +2144,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Update a country",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/Country"
                 }
               }
             }
@@ -1893,10 +2161,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -1913,12 +2181,12 @@
               }
             }
           },
-          "200": {
-            "description": "Update a country",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/Country"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1941,12 +2209,12 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Persist a country",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/Country"
                 }
               }
             }
@@ -1958,10 +2226,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -1978,12 +2246,12 @@
               }
             }
           },
-          "200": {
-            "description": "Persist a country",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/Country"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -2011,12 +2279,15 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Persist many workLocations",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WorkLocation"
+                  }
                 }
               }
             }
@@ -2028,10 +2299,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -2048,15 +2319,12 @@
               }
             }
           },
-          "200": {
-            "description": "Persist many workLocations",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WorkLocation"
-                  }
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -2084,12 +2352,15 @@
           "required": true
         },
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Persist many specialistSpecializations",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SpecialistSpecialization"
+                  }
                 }
               }
             }
@@ -2101,10 +2372,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -2121,15 +2392,12 @@
               }
             }
           },
-          "200": {
-            "description": "Persist many specialistSpecializations",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/SpecialistSpecialization"
-                  }
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -2155,12 +2423,15 @@
           }
         ],
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "FindAll by SpecialistId",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WorkLocation"
+                  }
                 }
               }
             }
@@ -2172,10 +2443,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -2192,15 +2463,12 @@
               }
             }
           },
-          "200": {
-            "description": "FindAll by SpecialistId",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WorkLocation"
-                  }
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -2226,12 +2494,12 @@
           }
         ],
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Find by id",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/UserInfo"
                 }
               }
             }
@@ -2243,10 +2511,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -2263,12 +2531,12 @@
               }
             }
           },
-          "200": {
-            "description": "Find by id",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserInfo"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -2283,12 +2551,15 @@
         ],
         "operationId": "letsDoThis",
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "OK",
             "content": {
-              "*/*": {
+              "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -2300,10 +2571,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -2320,15 +2591,12 @@
               }
             }
           },
-          "200": {
-            "description": "OK",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "text/plain": {
+              "*/*": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -2354,12 +2622,12 @@
           }
         ],
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Find by id",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/Specialist"
                 }
               }
             }
@@ -2371,10 +2639,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -2391,12 +2659,12 @@
               }
             }
           },
-          "200": {
-            "description": "Find by id",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/Specialist"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -2421,12 +2689,12 @@
           }
         ],
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Verify if specialist exists",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "type": "boolean"
                 }
               }
             }
@@ -2438,10 +2706,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -2458,12 +2726,12 @@
               }
             }
           },
-          "200": {
-            "description": "Verify if specialist exists",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "type": "boolean"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -2489,12 +2757,15 @@
           }
         ],
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "FindAll by SpecialistId",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SpecialistSpecialization"
+                  }
                 }
               }
             }
@@ -2506,10 +2777,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -2526,15 +2797,12 @@
               }
             }
           },
-          "200": {
-            "description": "FindAll by SpecialistId",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/SpecialistSpecialization"
-                  }
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -2560,12 +2828,12 @@
           }
         ],
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Find by id",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/SpecialistCv"
                 }
               }
             }
@@ -2577,10 +2845,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -2597,12 +2865,12 @@
               }
             }
           },
-          "200": {
-            "description": "Find by id",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/SpecialistCv"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -2628,12 +2896,12 @@
           }
         ],
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Find One by id",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/SpecialistBankAccount"
                 }
               }
             }
@@ -2645,10 +2913,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -2665,12 +2933,12 @@
               }
             }
           },
-          "200": {
-            "description": "Find One by id",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/SpecialistBankAccount"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -2696,12 +2964,15 @@
           }
         ],
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Find All by specialist Id",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SpecialistBankAccount"
+                  }
                 }
               }
             }
@@ -2713,10 +2984,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -2733,15 +3004,80 @@
               }
             }
           },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eureka/resource-server/v1/customer/{id}/information": {
+      "get": {
+        "tags": [
+          "customer-controller"
+        ],
+        "operationId": "GetInformationById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
           "200": {
-            "description": "Find All by specialist Id",
+            "description": "Get customer information",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/SpecialistBankAccount"
-                  }
+                  "$ref": "#/components/schemas/CustomerInformationDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ApiError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -2767,12 +3103,12 @@
           }
         ],
         "responses": {
-          "409": {
-            "description": "Conflict",
+          "200": {
+            "description": "Find by id",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/Customer"
                 }
               }
             }
@@ -2784,10 +3120,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ErrorResponse"
+                      "$ref": "#/components/schemas/ApiError"
                     },
                     {
-                      "$ref": "#/components/schemas/ApiError"
+                      "$ref": "#/components/schemas/ErrorResponse"
                     }
                   ]
                 }
@@ -2804,12 +3140,12 @@
               }
             }
           },
-          "200": {
-            "description": "Find by id",
+          "409": {
+            "description": "Conflict",
             "content": {
-              "application/json": {
+              "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/Customer"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -3561,7 +3897,67 @@
           }
         }
       },
-      "CustomerUpdateDto": {
+      "CustomerUpdatePhotoDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "file": {
+            "type": "string",
+            "format": "binary"
+          }
+        }
+      },
+      "CustomerPasswordUpdateDto": {
+        "required": [
+          "id",
+          "newPassword",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "password": {
+            "type": "string"
+          },
+          "newPassword": {
+            "type": "string"
+          }
+        }
+      },
+      "CustomerLocationUpdateDto": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "address": {
+            "maxLength": 127,
+            "minLength": 2,
+            "type": "string"
+          },
+          "districtId": {
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32",
+            "example": 1
+          }
+        }
+      },
+      "CustomerInformationUpdateDto": {
+        "required": [
+          "email",
+          "id"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -3578,9 +3974,9 @@
             "minLength": 2,
             "type": "string"
           },
-          "address": {
-            "maxLength": 127,
-            "minLength": 2,
+          "email": {
+            "maxLength": 60,
+            "minLength": 7,
             "type": "string"
           },
           "phone": {
@@ -3590,12 +3986,6 @@
           },
           "profilePhoto": {
             "$ref": "#/components/schemas/Photo"
-          },
-          "districtId": {
-            "maximum": 32767,
-            "minimum": 1,
-            "type": "integer",
-            "format": "int32"
           }
         }
       },
@@ -3680,6 +4070,44 @@
             "type": "boolean"
           },
           "districtId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "CustomerUpdateDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "maxLength": 36,
+            "minLength": 2,
+            "type": "string"
+          },
+          "lastName": {
+            "maxLength": 36,
+            "minLength": 2,
+            "type": "string"
+          },
+          "address": {
+            "maxLength": 127,
+            "minLength": 2,
+            "type": "string"
+          },
+          "phone": {
+            "maxLength": 15,
+            "minLength": 9,
+            "type": "string"
+          },
+          "profilePhoto": {
+            "$ref": "#/components/schemas/Photo"
+          },
+          "districtId": {
+            "maximum": 32767,
+            "minimum": 1,
             "type": "integer",
             "format": "int32"
           }
@@ -4022,6 +4450,37 @@
             "minLength": 3,
             "type": "string",
             "description": "Numeric code from ISO 3166-1"
+          }
+        }
+      },
+      "CustomerInformationDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "districtId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "address": {
+            "type": "string"
+          },
+          "avatar": {
+            "type": "string"
           }
         }
       }
